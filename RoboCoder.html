@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RoboCoder</title>
+  <meta name="description" content="I am Anirudh on this channel I going to show you how to code, how to use Arduino and code it and show you how to make projects with Witblox, a fun robotics kit for Young Inventors.">
+  <link rel="icon" href="https://yt3.googleusercontent.com/mUO9-ly50vA601vJ5NRCE5fCJwaM5na5bfIxGA7t5iRkEwVDn2Qs7yHA0wsnzBCxohwAsnNw6zs=s176-c-k-c0x00ffffff-no-rj">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #00b4db, #0083b0);
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h1 {
+      font-size: 4em;
+      color: white;
+      text-shadow: 0 0 10px black;
+    }
+    h1:hover {
+      animation: pulse 1s infinite; /* add a pulse animation on hover */
+    }
+    @keyframes pulse {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.2);}
+      100% {transform: scale(1);}
+    }
+    p {
+      font-size: 1.5em;
+      color: white;
+    }
+    .video {
+      margin-top: 20px;
+    }
+    .button {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.2em;
+      text-decoration: none;
+      background: linear-gradient(to right, #f127e6, #f5af19);
+      box-shadow: inset 0 -3px #f127e6, inset 0 -6px #f5af19, inset 0 -9px #f127e6, inset 0 -12px #f5af19;
+    }
+    .button:hover {
+      transform: scale(1.1);
+    }
+    .button:active {
+      transform: scale(0.9);
+    }
+    .links {
+      margin-top: 20px;
+    }
+    .links a {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: white;
+      font-size: 1em;
+      text-decoration: none;
+      background-color: #333333;
+    }
+    .links a:hover {
+      background-color: #555555;
+    }
+    .animation {
+      position: fixed;
+      top: -100%;
+      left: -100%;
+      width: 200%;
+      height: 200%;
+      background-color: rgba(255,255,255,0.2);
+      z-index: -1;
+    }
+    @keyframes move {
+      from {transform: rotate(0deg) translateX(-50%) translateY(-50%);}
+      to {transform: rotate(360deg) translateX(-50%) translateY(-50%);}
+    }
+    .comment-section {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .comment-section h2 {
+      font-size: 2em;
+      color: white;
+      text-shadow: 0 0 10px black;
+    }
+    .comment-section textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border-radius: 5px;
+      resize: none;
+    }
+    .comment-section button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      background-color: #f5af19;
+      color: white;
+      cursor: pointer;
+    }
+    .comment-list {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .comment-list .comment {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #333333;
+      color: white;
+      border-radius: 5px;
+    }
+    .comment-list .comment .author {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RoboCoder</h1>
+    <p>Welcome to my channel!</p>
+    <div class="video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/m-kc4FafZoo" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="button">
+      <a href="https://www.youtube.com/@robocoder217/featured">Subscribe Now</a>
+    </div>
+    <div class="links">
+      <a href="https://github.com/anirudhvempati">Github</a>
+      <a href="https://website.witblox.com/ZRjEJrIAwLTsHZW0EYFjmDQqYQp1">Witblox</a>
+    </div>
+    <div class="comment-section">
+      <h2>Leave a comment</h2>
+      <textarea id="comment-textarea" placeholder="Write your comment here"></textarea>
+      <button onclick="postComment()">Post</button>
+    </div>
+    <div class="comment-list" id="comment-list">
+      <h2>Comments</h2>
+    </div>
+  </div>
+  <div class="animation"></div>
+  <script>
+    let animation = document.querySelector(".animation");
+    let angle = Math.random() * Math.PI * 2; // random angle in radians
+    let speed = Math.random() * 10 + 10; // random speed in pixels per frame
+    let radius = Math.random() * window.innerWidth / 4 + window.innerWidth / 4; // random radius in pixels
+    let centerX = window.innerWidth / 2; // center x coordinate of the circle
+    let centerY = window.innerHeight / 2; // center y coordinate of the circle
+    let frame = () => {
+      angle += speed / radius; // update angle based on speed and radius
+      let x = centerX + Math.cos(angle) * radius; // calculate x coordinate based on angle and radius
+      let y = centerY + Math.sin(angle) * radius; // calculate y coordinate based on angle and radius
+      animation.style.left = x + "px"; // set the left position of the animation element
+      animation.style.top = y + "px"; // set the top position of the animation element
+      requestAnimationFrame(frame); // request the next frame
+    };
+    requestAnimationFrame(frame); // start the animation loop
+
+    function postComment() {
+      const commentTextarea = document.getElementById("comment-textarea");
+      const commentText = commentTextarea.value.trim();
+      if (commentText !== "") {
+        const commentList = document.getElementById("comment-list");
+        const commentElement = document.createElement("div");
+        commentElement.classList.add("comment");
+        commentElement.innerHTML = "<span class='author'>Anonymous:</span> " + commentText;
+        commentList.appendChild(commentElement);
+        commentTextarea.value = "";
+      }
+    }
+  </script>
+</body>
+</html>
