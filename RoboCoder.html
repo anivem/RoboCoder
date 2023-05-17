@@ -1,0 +1,286 @@
+<html>
+<head>
+  <title>RoboCoder</title>
+  <meta name="description" content="I am Anirudh on this channel I going to show you how to code, how to use Arduino and code it and show you how to make projects with Witblox, a fun robotics kit for Young Inventors.">
+  <link rel="icon" href="https://yt3.googleusercontent.com/mUO9-ly50vA601vJ5NRCE5fCJwaM5na5bfIxGA7t5iRkEwVDn2Qs7yHA0wsnzBCxohwAsnNw6zs=s176-c-k-c0x00ffffff-no-rj">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #00b4db, #0083b0);
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h1 {
+      font-size: 4em;
+      color: white;
+      text-shadow: 0 0 10px black;
+    }
+    h1:hover {
+      animation: pulse 1s infinite; /* add a pulse animation on hover */
+    }
+    @keyframes pulse {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.2);}
+      100% {transform: scale(1);}
+    }
+    p {
+      font-size: 1.5em;
+      color: white;
+    }
+    .video {
+      margin-top: 20px;
+    }
+    .button {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.2em;
+      text-decoration: none;
+      background: linear-gradient(to right, #f127e6, #f5af19);
+      box-shadow: inset 0 -3px #f127e6, inset 0 -6px #f5af19, inset 0 -9px #f127e6, inset 0 -12px #f5af19;
+    }
+    .button:hover {
+      transform: scale(1.1);
+    }
+    .button:active {
+      transform: scale(0.9);
+    }
+    .links {
+      margin-top: 20px;
+    }
+    .links a {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: white;
+      font-size: 1em;
+      text-decoration: none;
+      background-color: #333333;
+    }
+    .links a:hover {
+      background-color: #555555;
+    }
+    .animation {
+      position: fixed;
+      top: -100%;
+      left: -100%;
+      width: 200%;
+      height: 200%;
+      background-color: rgba(255,255,255,0.2);
+      z-index: -1;
+    }
+    @keyframes move {
+      from {transform: rotate(0deg) translateX(-50%) translateY(-50%);}
+      to {transform: rotate(360deg) translateX(-50%) translateY(-50%);}
+    }
+    .comment-section {
+      margin-top: 20px;
+    }
+    .comment-form {
+      margin-bottom: 10px;
+    }
+    .comment-textarea {
+      width: 100%;
+      height: 80px;
+      resize: none;
+      font-size: 1em;
+    }
+    .comment-list {
+      text-align: left;
+    }
+    .comment {
+      margin-bottom: 10px;
+    }
+    .comment .author {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RoboCoder</h1>
+    <p>Welcome to my channel!</p>
+    <div class="video">
+      <iframe width="1120" height="630" src="https://www.youtube.com/embed/m-kc4FafZoo" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="button">
+      <a href="https://www.youtube.com/@robocoder217/featured">Subscribe Now</a>
+    </div>
+    <div class="links">
+      <a href="https://github.com/anirudhvempati">Github</a>
+      <a href="https://website.witblox.com/ZRjEJrIAwLTsHZW0EYFjmDQqYQp1">Witblox</a>
+    </div>
+    <div class="comment-section">
+      <form class="comment-form">
+        <textarea class="comment-textarea" id="comment-textarea" placeholder="Leave a comment"></textarea>
+        <button type="button" onclick="postComment()">Post Comment</button>
+      </form>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+  </div>
+  <div class="animation"></div>
+  <script>
+    // Load comments from local storage
+    function loadComments() {
+      const commentList = document.getElementById("comment-list");
+      const comments = localStorage.getItem("comments");
+      if (comments) {
+        commentList.innerHTML = comments;
+      }
+    }
+
+    // Save comments to local storage
+    function saveComments() {
+      const commentList = document.getElementById("comment-list");
+      localStorage.setItem("comments", commentList.innerHTML);
+    }
+
+    // Post a new comment
+    function postComment() {
+      const commentTextarea = document.getElementById("comment-textarea");
+      const commentText = commentTextarea.value.trim();
+      if (commentText !== "") {
+        const commentList = document.getElementById("comment-list");
+        const commentElement = document.createElement("div");
+        commentElement.classList.add("comment");
+        commentElement.innerHTML = "<span class='author'>Anonymous:</span> " + commentText;
+        commentList.appendChild(commentElement);
+        commentTextarea.value = "";
+
+        saveComments(); // Save the comments to local storage
+      }
+    }
+
+    // Load comments when the page is loaded
+    document.addEventListener("DOMContentLoaded", loadComments);
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RoboCoder</title>
+  <meta name="description" content="I am Anirudh on this channel I going to show you how to code, how to use Arduino and code it and show you how to make projects with Witblox, a fun robotics kit for Young Inventors.">
+  <link rel="icon" href="https://yt3.googleusercontent.com/mUO9-ly50vA601vJ5NRCE5fCJwaM5na5bfIxGA7t5iRkEwVDn2Qs7yHA0wsnzBCxohwAsnNw6zs=s176-c-k-c0x00ffffff-no-rj">
+  <!-- Add Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js"></script>
+  <style>
+    /* CSS styles */
+
+    /* ... (existing CSS styles) ... */
+    
+    .comment-section {
+      margin-top: 20px;
+    }
+    .comment-form {
+      margin-bottom: 10px;
+    }
+    .comment-textarea {
+      width: 100%;
+      height: 80px;
+      resize: none;
+      font-size: 1em;
+    }
+    .comment-list {
+      text-align: left;
+    }
+    .comment {
+      margin-bottom: 10px;
+    }
+    .comment .author {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RoboCoder</h1>
+    <p>Welcome to my channel!</p>
+    <div class="video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/m-kc4FafZoo" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="button">
+      <a href="https://www.youtube.com/@robocoder217/featured">Subscribe Now</a>
+    </div>
+    <div class="links">
+      <a href="https://github.com/anirudhvempati">Github</a>
+      <a href="https://website.witblox.com/ZRjEJrIAwLTsHZW0EYFjmDQqYQp1">Witblox</a>
+    </div>
+    <div class="comment-section">
+      <form class="comment-form">
+        <textarea class="comment-textarea" name="comment" placeholder="Leave a comment"></textarea>
+        <button type="submit" name="submit">Post Comment</button>
+      </form>
+      <div class="comment-list"></div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDqXvG2yn9PN0aPuaEzq6pIEUhdb23nbCk",
+      authDomain: "robocoder-48dd5.firebaseapp.com",
+      projectId: "robocoder-48dd5",
+      storageBucket: "robocoder-48dd5.appspot.com",
+      messagingSenderId: "777514898902",
+      appId: "1:777514898902:web:57b58c55bc7ecbf7858077",
+      
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Retrieve the comment list
+    const commentList = document.querySelector(".comment-list");
+
+    // Fetch and display comments
+    db.collection("comments")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        commentList.innerHTML = "";
+        snapshot.forEach((doc) => {
+          const commentData = doc.data();
+          const comment = document.createElement("div");
+          comment.classList.add("comment");
+          comment.innerHTML = `<span class="author">${commentData.author}</span>: ${commentData.comment}`;
+          commentList.appendChild(comment);
+        });
+      });
+
+    // Submit a comment
+    const commentForm = document.querySelector(".comment-form");
+    const commentTextarea = document.querySelector(".comment-textarea");
+
+    commentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const comment = commentTextarea.value.trim();
+
+      if (comment !== "") {
+        db.collection("comments")
+          .add({
+            author: "Anonymous", // You can customize this to use a user's name if you have authentication
+            comment: comment,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+          })
+          .then(() => {
+            commentTextarea.value = "";
+          })
+          .catch((error) => {
+            console.error("Error adding comment: ", error);
+          });
+      }
+    });
+  </script>
+</body>
+</html>
